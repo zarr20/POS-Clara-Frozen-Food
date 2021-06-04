@@ -69,10 +69,16 @@
         // echo $content_;
         if($content_ == 'dashboard'){
             include("pages/dashboard.php");
-        }else if ($content_ == 'a'){
-            echo "asdas";
+        }else if ($content_ == 'inventory'){
+            include("pages/inventory.php");
+        }else if ($content_ == 'transaction'){
+            include("pages/transaction.php");
+        }else if ($content_ == 'report'){
+            include("pages/report.php");
+        }else if ($content_ == 'user'){
+            include("pages/user.php");
         }else{
-            echo "404";
+            echo "Page not Found";
         }
         
         ?> 
