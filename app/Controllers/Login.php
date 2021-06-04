@@ -28,8 +28,9 @@ class Login extends Controller
             print_r($verify_pass);
             if ($verify_pass) {
                 $ses_data = [
-                    'username'     => $data['username'],
-                    'nama_pengguna'     => $data['nama_pengguna'],
+                    'username_clarafrozenfood'     => $data['username'],
+                    'namapengguna_clarafrozenfood'     => $data['nama_pengguna'],
+                    'iduser_clarafrozenfood'     => $data['id_pengguna'],
                     'logged_in'     => TRUE
                 ];
                 $session->set($ses_data);
