@@ -26,7 +26,7 @@ class Admin extends BaseController
 		// 	$product_id = $this->uri->segment(3);
 		// }
 		//  return view('welcome_message');
-		echo view('admin', $data);
+		echo view('admin/admin', $data);
 	}
 
 	public function pages($halaman = "dashboard")
