@@ -15,10 +15,12 @@
         
         <ul>
             <li class="<?php if($content_ == 'dashboard'){ echo 'active'; } ?>"><a href="/admin"><i class="fa fa-home"></i>Dashboard</a></li>
-            <li class="<?php if($content_ == 'inventory'){ echo 'active'; } ?>"><a href="/admin/inventory"><i class="fa fa-home"></i>Inventory</a></li>
             <li class="<?php if($content_ == 'transaction'){ echo 'active'; } ?>"><a href="/admin/transaction"><i class="fa fa-home"></i>Transaction</a></li>
+            <?php if($akses_pengguna_ !== 'cashier') { ?>
+            <li class="<?php if($content_ == 'inventory'){ echo 'active'; } ?>"><a href="/admin/inventory"><i class="fa fa-home"></i>Inventory</a></li>
             <li class="<?php if($content_ == 'report'){ echo 'active'; } ?>"><a href="/admin/report"><i class="fa fa-home"></i>Report</a></li>
             <li class="<?php if($content_ == 'user'){ echo 'active'; } ?>"><a href="/admin/user"><i class="fa fa-home"></i>User</a></li>
+            <?php } ?>
             <li><a  href="/login/logout" style=" color: #DA4403; "><i class="fa fa-home"></i>Logout</a></li>
         </ul>
         <div class="social_media"> <a href="#"><i class="fa fa-facebook-f"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-instagram"></i></a> </div>
@@ -69,15 +71,21 @@
         // echo $content_;
         if($content_ == 'dashboard'){
             include("pages/dashboard.php");
-        }else if ($content_ == 'inventory'){
-            include("pages/inventory.php");
         }else if ($content_ == 'transaction'){
             include("pages/transaction.php");
-        }else if ($content_ == 'report'){
-            include("pages/report.php");
-        }else if ($content_ == 'user'){
-            include("pages/user.php");
-        }else{
+        }
+
+        else if($akses_pengguna_ !== 'cashier') {
+            if ($content_ == 'inventory'){
+                include("pages/inventory.php");
+            }else if ($content_ == 'report'){
+                include("pages/report.php");
+            }else if ($content_ == 'user'){
+                include("pages/user.php");
+            }
+        }
+
+        else{
             echo "Page not Found";
         }
         

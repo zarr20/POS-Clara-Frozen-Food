@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 // use CodeIgniter\Controller;
 use App\Models\PenggunaModel;
+use App\Models\Inventory_model;
 
 class Admin extends BaseController
 {
@@ -18,7 +19,10 @@ class Admin extends BaseController
 		if ($segment == "" || $segment == "dashboard") {
 			$segment = "dashboard";
 		}
-		else if ($segment == "inventory") {}
+		else if ($segment == "inventory") {
+			 $Inventory_model = new Inventory_model;
+			 $data['getInventory']  = $Inventory_model->getInventory()->getResult();
+		}
 		else if ($segment == "transaction") {}
 		else if ($segment == "user") {}
 		else if ($segment == "report") {}
