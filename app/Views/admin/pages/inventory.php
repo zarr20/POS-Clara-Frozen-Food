@@ -4,16 +4,56 @@
 
 
 
-<a href="#" style="background-color: #03DA73;color: white;text-decoration: none;padding: 8px 13px;border-radius: 5px;align-self: center;align-content: center;">
+<a data-toggle="modal" data-target="#exampleModal" href="#" style="background-color: #5e5e5e;color: white;text-decoration: none;padding: 8px 13px;border-radius: 5px;align-self: center;align-content: center;">
 <img src="/assets/plus-icon.svg" style="margin-right: 9px;margin-top: -4;">
 Add Item
 </a>
+
+<!-- Modal Add Inventory -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        Add Item
+        <a class="close" data-dismiss="modal" aria-label="Close" href="#" style="align-self: center;align-content: center;">
+        <img src="/assets/delete-icon-black.svg" style="/* margin-top: -4; */height: 23px;">
+        </a>
+      </div>
+      <div class="modal-body">
+        
+        
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Item code</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="KD00125555">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Chicken Wing 500gr">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Stock</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="0">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Price</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="0">
+      </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add Item</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="card" style="padding: 20px;margin-top: 20px;">
 <table class="table">
   <thead>
     <tr>
       <th scope="col">No</th>
+      <th scope="col">Code</th>
       <th scope="col">Product</th>
       <th scope="col">Stock</th>
       <th scope="col">Price</th>
@@ -24,6 +64,7 @@ Add Item
     <?php $no=1; foreach($getInventory as $Inventory){?>
         <tr>
             <th scope="row"><?php print_r($no); $no++; ?></th>
+            <th scope="col"><?php print_r($Inventory->barang_kode) ?></th>
             <td><?php print_r($Inventory->barang_nama) ?></td>
             <td><?php print_r($Inventory->stok) ?></td>
             <td>Rp. <?php print_r($Inventory->harga) ?></td>
@@ -35,7 +76,7 @@ Add Item
                 </a>
                 <a href="#" 
                 style="background-color: #da0348;color: white;text-decoration: none;padding: 4px 13px;margin: 2px;border-radius: 5px;align-self: center;align-content: center;">
-                <img src="/assets/plus-icon.svg" style="margin-right: 9px;margin-top: -4;">
+                <img src="/assets/trash-icon.svg" style="margin-right: 9px;margin-top: -4;">
                 Delete
                 </a>
             </td>
@@ -60,3 +101,5 @@ Add Item
   </tbody>
 </table>
 </div>
+
+

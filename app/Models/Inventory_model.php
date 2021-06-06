@@ -28,6 +28,8 @@ class Inventory_model extends Model
         $query = $this->db->table('product')->delete(array('product_id' => $id));
         return $query;
     } 
+
+
  
    
 }

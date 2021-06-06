@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Main::index');
 //  $routes->get('/admin', 'Main::index');
+$routes->get('/admin/check_product', 'Admin::check_product');
  $routes->get('/admin/:segment', 'Admin::index');
 
 

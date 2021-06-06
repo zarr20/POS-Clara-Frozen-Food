@@ -1,6 +1,6 @@
 <?php include("admin_header.php") ?>
 
-<div class="wrapper">
+<div class="wrapper" style=" max-width: 2000px; margin: 0 auto; ">
     <div class="sidebar">
     <div style=" display: flex; padding: 20px; width: max-content;">
         <img src="/assets/foto-tidak_ada.svg" style=" margin-right: 20px; ">
@@ -64,9 +64,19 @@
                 
             }
             </script>
-            <div style=" align-self: center; "><?php echo ucfirst($content_); ?></div>    
+            <div style=" align-self: center; "
+            ><?php echo ucfirst($content_); ?>
+            <?php if ($content_ == 'transaction'){?>
+                <a target="_blank" rel="noopener noreferrer" href="/admin/transaction" style="background-color: #3f3f3f;color: white;text-decoration: none;padding: 5px 13px;border-radius: 5px;align-self: center;align-content: center;margin-left: 20;">
+                <img src="/assets/plus-icon.svg" style="margin-right: 9px;margin-top: -4;">
+                New Tab
+                </a>
+            <?php } ?>
+            </div>    
         </div>
+        <div class="overflow-auto mh-100" style="height: 89vh;overflow: auto;">
         <div class="info">
+        
         <?php 
         // echo $content_;
         if($content_ == 'dashboard'){
@@ -90,6 +100,7 @@
         }
         
         ?> 
+        </div>
         </div>
     </div>
 </div>
