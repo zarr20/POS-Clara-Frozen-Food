@@ -1,7 +1,52 @@
-<a href="#" style="background-color: #03DA73;color: white;text-decoration: none;padding: 8px 13px;border-radius: 5px;align-self: center;align-content: center;">
+<a data-toggle="modal" data-target="#exampleModal"  href="#" style="background-color: #5e5e5e;color: white;text-decoration: none;padding: 8px 13px;border-radius: 5px;align-self: center;align-content: center;">
 <img src="/assets/plus-icon.svg" style="margin-right: 9px;margin-top: -4;">
 Add Operator
 </a>
+
+<!-- Modal Add Inventory -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        Add Operator
+        <a class="close" data-dismiss="modal" aria-label="Close" href="#" style="align-self: center;align-content: center;">
+        <img src="/assets/delete-icon-black.svg" style="/* margin-top: -4; */height: 23px;">
+        </a>
+      </div>
+      <div class="modal-body">
+        
+      <form action="/admin/" method="post">
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Name</label>
+        <input type="text" class="form-control" placeholder="">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Access</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>admin</option>
+          <option>cashier</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Username</label>
+        <input type="text" class="form-control" placeholder="">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Password</label>
+        <input type="text" class="form-control" placeholder="">
+      </div>
+      
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
 
 <div class="card" style="padding: 20px;margin-top: 20px;">
 <table class="table">

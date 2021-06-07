@@ -37,6 +37,7 @@ $routes->get('/admin/inventory-delete/:segment', 'Admin::inventory_delete');
 $routes->post('/admin/inventory-save', 'Admin::inventory_save');
 $routes->post('/admin/inventory-add', 'Admin::inventory_add');
 $routes->get('/admin/check_product', 'Admin::check_product');
+$routes->post('/admin/transaction/process', 'Admin::transaction_process');
 $routes->get('/admin/report/:segment', 'Admin::index');
 $routes->get('/admin/:segment', 'Admin::index');
 

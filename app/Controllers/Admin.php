@@ -71,13 +71,47 @@ class Admin extends BaseController
         print_r($Transaction_model->check_data($kodeBrg)) ;
     }
 
+	public function transaction_process(){
+		$request = \Config\Services::request();
+		$Transaction_model = new Transaction_model;
+		$data = json_decode($request->getPost('test'));
+		// $myTime = new Time('now');
+		$date = date("Y-m-d h:i:s");
+		define("id", crc32($date));
+		// $id = crc32($date);
+		
+		$name = $request->getPost('test2');
+		
+		$transaction = [
+			'transaksi_kode' => id,
+			'tanggal_transaksi'    => $date,
+			'operator_transaksi' => $name,
+			'total_transaksi'    => 0
+		];
+
+		$Transaction_model->addTransaction($transaction) ;
+		$no = 1;
+		foreach($data as $item){
+			$items = [
+				'barang_nama' => $item->namabrg,
+				'barang_jumlah'    => $item->qty,
+				'barang_harga' => $item->hargabrg,
+				'transaksi_kode'    => id
+			];
+			$Transaction_model->addTransaction_item($items) ;
+		}
+		return redirect()->to(("/admin/report/" . id));
+		
+		
+	}
+
 	public function inventory_add(){
 		$request = \Config\Services::request();
 		// var_dump($request->getPost());
 		// echo $request->getPost('brgCode');
 		$Transaction_model = new Transaction_model;
 		$Inventory_model = new Inventory_model;
-
+		
 		$checkdata = json_decode($Transaction_model->check_data($request->getPost('brgCode')));
 		if(!$checkdata){
 			$data = [

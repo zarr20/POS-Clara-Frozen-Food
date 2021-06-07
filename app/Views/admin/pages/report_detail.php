@@ -7,9 +7,9 @@
 <span class="badge bg-primary"><?php echo "Transaction: ", $segment; ?></span>
 </div>
 <div>
-<span class="badge bg-light text-dark"><?php print_r($getTransaksi_bycode->tanggal_transaksi); ?></span>
+<span class="badge bg-light text-dark"><?php print_r(@$getTransaksi_bycode->tanggal_transaksi); ?></span>
 <span class="badge bg-light text-dark">
-<?php print_r($getTransaksi_bycode->operator_transaksi); ?>
+<?php print_r(@$getTransaksi_bycode->operator_transaksi); ?>
 </span>
 </div>
 </div>
@@ -57,7 +57,7 @@
         <th>Total: </th>
         <td>
         <div>
-            <?php print_r($getTransaksi_bycode->total_transaksi); ?>
+            <?php print_r(@$getTransaksi_bycode->total_transaksi); ?>
         <div>
         </td>
     </tr>
