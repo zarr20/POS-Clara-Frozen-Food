@@ -91,9 +91,33 @@ class Admin extends BaseController
 			
 			$Inventory_model->addInventory($data);
 	
-			// return redirect()->to('/admin/inventory');
+			return redirect()->to('/admin/inventory');
 		}else{
+			return redirect()->to('/admin/inventory');
 			echo "Kode Sudah dipakai!";
+		}
+	}
+
+	public function inventory_save(){
+		$request = \Config\Services::request();
+		$Transaction_model = new Transaction_model;
+		$Inventory_model = new Inventory_model;
+
+		$checkdata = json_decode($Transaction_model->check_data($request->getPost('brgCode')));
+		if(!$checkdata){
+			$data = [
+				// 'barang_kode' => $request->getPost('brgCode'),
+				'barang_nama'    => $request->getPost('brgNameEdit'),
+				'harga' => $request->getPost('brgPriceEdit'),
+				'stok'    => $request->getPost('brgStockEdit')
+			];
+			// var_dump($data);
+			// echo  $request->getPost('brgCodeEdit');
+			$Inventory_model->updateInventory($data, $request->getPost('brgCodeEdit'));
+			// echo "Berhasil diubah";
+			return redirect()->to('/admin/inventory');
+		}else{
+			return redirect()->to('/admin/inventory');
 		}
 		
 	}

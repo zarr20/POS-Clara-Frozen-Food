@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Main::index');
 //  $routes->get('/admin', 'Main::index');
 $routes->get('/admin/inventory-delete/:segment', 'Admin::inventory_delete');
+$routes->post('/admin/inventory-save', 'Admin::inventory_save');
 $routes->post('/admin/inventory-add', 'Admin::inventory_add');
 $routes->get('/admin/check_product', 'Admin::check_product');
 $routes->get('/admin/report/:segment', 'Admin::index');

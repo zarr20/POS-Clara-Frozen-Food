@@ -50,6 +50,47 @@ Add Item
   </div>
 </div>
 
+<!-- Modal Edit Inventory -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        Edit Item
+        <a class="close" data-dismiss="modal" aria-label="Close" href="#" style="align-self: center;align-content: center;">
+        <img src="/assets/delete-icon-black.svg" style="/* margin-top: -4; */height: 23px;">
+        </a>
+      </div>
+      <div class="modal-body">
+        
+      <form action="/admin/inventory-save" method="post">
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Item code</label>
+        <input type="text" class="form-control" name="brgCodeEdit" id="brgCode" placeholder="KD00125555" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Product Name</label>
+        <input type="text" class="form-control" name="brgNameEdit"  id="brgName" placeholder="Chicken Wing 500gr">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Stock</label>
+        <input type="text" class="form-control" name="brgStockEdit"  id="brgStock" placeholder="0">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Price</label>
+        <input type="text" class="form-control" name="brgPriceEdit"  id="brgPrice" placeholder="0">
+      </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
 <div class="card" style="padding: 20px;margin-top: 20px;">
 <table class="table">
   <thead>
@@ -71,7 +112,15 @@ Add Item
             <td><?php print_r($Inventory->stok) ?></td>
             <td>Rp. <?php print_r($Inventory->harga) ?></td>
             <td style="text-align:right">
-                <a href="#" 
+                <a href="#" data-toggle="modal" data-target="#exampleModal2" 
+                onclick="
+                editInventory(
+                  '<?php print_r($Inventory->barang_kode) ?>',
+                  '<?php print_r($Inventory->barang_nama) ?>',
+                  '<?php print_r($Inventory->stok) ?>',
+                  '<?php print_r($Inventory->harga) ?>',
+                  )
+                "
                 style="background-color: #03DA73;color: white;text-decoration: none;padding: 4px 13px;margin: 2px;border-radius: 5px;align-self: center;align-content: center;">
                 <img src="/assets/plus-icon.svg" style="margin-right: 9px;margin-top: -4;">
                 Edit
@@ -104,4 +153,13 @@ Add Item
 </table>
 </div>
 
+<script>
+function editInventory(a,b,c,d){
+  // console.log(a+b+c+d);
+  document.getElementById("brgCode").value = a;
+  document.getElementById("brgName").value = b;
+  document.getElementById("brgStock").value = c;
+  document.getElementById("brgPrice").value = d;
+}
+</script>
 

@@ -17,11 +17,13 @@ class Inventory_model extends Model
         return $query;
     }
  
-    // public function updateProduct($data, $id)
-    // {
-    //     $query = $this->db->table('product')->update($data, array('product_id' => $id));
-    //     return $query;
-    // }
+    public function updateInventory($data, $id)
+    {        
+        // print_r($id);
+        $builder = $this->db->table('barang');
+        $builder->where('barang_kode', $id);
+        return $builder->update($data);
+    }
  
     public function deleteInventory($code)
     {
