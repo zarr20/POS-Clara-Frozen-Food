@@ -21,29 +21,31 @@ Add Item
       </div>
       <div class="modal-body">
         
-        
+      <form action="/admin/inventory-add" method="post">
       <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Item code</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="KD00125555">
+        <input type="text" class="form-control" name="brgCode" placeholder="KD00125555">
       </div>
       <div class="mb-3">
         <label for="formGroupExampleInput2" class="form-label">Product Name</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Chicken Wing 500gr">
+        <input type="text" class="form-control" name="brgName" placeholder="Chicken Wing 500gr">
       </div>
       <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Stock</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="0">
+        <input type="text" class="form-control" name="brgStock" placeholder="0">
       </div>
       <div class="mb-3">
         <label for="formGroupExampleInput2" class="form-label">Price</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="0">
+        <input type="text" class="form-control" name="brgPrice" placeholder="0">
       </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add Item</button>
+        <button type="submit" class="btn btn-primary">Add Item</button>
       </div>
+      </form>
+
     </div>
   </div>
 </div>
@@ -74,7 +76,7 @@ Add Item
                 <img src="/assets/plus-icon.svg" style="margin-right: 9px;margin-top: -4;">
                 Edit
                 </a>
-                <a href="#" 
+                <a href="/admin/inventory-delete/<?php print_r($Inventory->barang_kode) ?>" 
                 style="background-color: #da0348;color: white;text-decoration: none;padding: 4px 13px;margin: 2px;border-radius: 5px;align-self: center;align-content: center;">
                 <img src="/assets/trash-icon.svg" style="margin-right: 9px;margin-top: -4;">
                 Delete

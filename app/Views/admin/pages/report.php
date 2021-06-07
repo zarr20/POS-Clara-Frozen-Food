@@ -1,29 +1,36 @@
-ini report
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
-        <a class="close" data-dismiss="modal" aria-label="Close" href="#" style="align-self: center;align-content: center;">
-        <img src="/assets/delete-icon-black.svg" style="/* margin-top: -4; */height: 23px;">
-        </a>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+<div class="card" style="padding: 20px;margin-top: 20px;">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Date</th>
+      <th scope="col">Operator</th>
+      <th scope="col">Total</th>
+      <th scope="col">Transaction Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>20 Januari 2020</td>
+      <td>Dzarr</td>
+      <td>Rp 20.000</td>
+      <td>
+        <div>00216584684253</div>
+        <div>
+          <a 
+          href="/admin/report/00216584684253" 
+          style="
+              text-decoration: none;
+              font-size: 13;
+          "
+          >See Detail</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div>
+
+

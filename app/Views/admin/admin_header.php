@@ -21,6 +21,9 @@
 .table thead tr th {
     border-bottom: 3px solid #d0d0d04a!important;
 }
+.table div {
+    margin: 0 !important;
+}
 </style>
     <style>
 

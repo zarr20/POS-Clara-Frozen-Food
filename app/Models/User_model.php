@@ -3,17 +3,17 @@
 namespace App\Models;
 use CodeIgniter\Model;
  
-class Inventory_model extends Model
+class User_model extends Model
 {
-    public function getInventory()
+    public function getUser()
     {
-        $builder = $this->db->table('barang');
+        $builder = $this->db->table('pengguna');
         $builder->select('*');
         return $builder->get();
     }
  
     public function addInventory($data){
-        $query = $this->db->table('barang')->insert($data);
+        $query = $this->db->table('pengguna')->insert($data);
         return $query;
     }
  

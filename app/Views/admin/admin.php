@@ -89,7 +89,15 @@
             if ($content_ == 'inventory'){
                 include("pages/inventory.php");
             }else if ($content_ == 'report'){
-                include("pages/report.php");
+                $request = \Config\Services::request();
+                $segment = $request->uri->getSegment(3);
+                if($segment){
+                    include("pages/report_detail.php");
+                }else{
+                    include("pages/report.php");
+                }
+                
+                
             }else if ($content_ == 'user'){
                 include("pages/user.php");
             }

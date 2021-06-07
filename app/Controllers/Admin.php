@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Models\PenggunaModel;
 use App\Models\Inventory_model;
 use App\Models\Transaction_model;
+use App\Models\User_model;
 
 class Admin extends BaseController
 {
@@ -21,8 +22,12 @@ class Admin extends BaseController
 			 $data['getInventory']  = $Inventory_model->getInventory()->getResult();
 		}
 		else if ($segment == "transaction") {}
-		else if ($segment == "user") {}
-		else if ($segment == "report") {}
+		else if ($segment == "user") {
+			$User_model = new User_model;
+			$data['getUser']  = $User_model->getUser()->getResult();
+		}
+		else if ($segment == "report") {
+		}
 		else{
 			$segment = "404";
 		}
@@ -57,18 +62,42 @@ class Admin extends BaseController
         print_r($Transaction_model->check_data($kodeBrg)) ;
     }
 
+	public function inventory_add(){
+		$request = \Config\Services::request();
+		// var_dump($request->getPost());
+		// echo $request->getPost('brgCode');
+		$Transaction_model = new Transaction_model;
+		$Inventory_model = new Inventory_model;
 
-	// public function pages($halaman = "dashboard")
-	// {
-	// 	$session = session();
-	// 	if ($halaman == "") {
-	// 		$halaman = "dashboard";
-	// 	}
-	// 	$data['content_']   = $halaman;
-	// 	return view('admin', $data);
-	// }
-
-	public function getTransactionProduct($kodeBrg){
-		return "asdasd";
+		$checkdata = json_decode($Transaction_model->check_data($request->getPost('brgCode')));
+		if(!$checkdata){
+			$data = [
+				'barang_kode' => $request->getPost('brgCode'),
+				'barang_nama'    => $request->getPost('brgName'),
+				'harga' => $request->getPost('brgPrice'),
+				'stok'    => $request->getPost('brgStock')
+			];
+			// var_dump($data);
+			echo "Berhasil ditambahkan";
+			
+			$Inventory_model->addInventory($data);
+	
+			// return redirect()->to('/admin/inventory');
+		}else{
+			echo "Kode Sudah dipakai!";
+		}
+		
 	}
+
+	public function inventory_delete(){
+		$segment = $this->request->uri->getSegment(3);
+		echo $segment;
+
+		$Inventory_model = new Inventory_model;
+		$Inventory_model->deleteInventory($segment);
+
+		return redirect()->to('/admin/inventory');
+	
+	}
+
 }
