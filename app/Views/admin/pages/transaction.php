@@ -123,5 +123,3 @@ tr {
     vertical-align: middle;
 }
 </style>
-
-Proses Transaksi akan di input di 2 tabel database

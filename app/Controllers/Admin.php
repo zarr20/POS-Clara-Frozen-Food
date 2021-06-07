@@ -7,6 +7,7 @@ use App\Models\PenggunaModel;
 use App\Models\Inventory_model;
 use App\Models\Transaction_model;
 use App\Models\User_model;
+use App\Models\Report_model;
 
 class Admin extends BaseController
 {
@@ -27,6 +28,14 @@ class Admin extends BaseController
 			$data['getUser']  = $User_model->getUser()->getResult();
 		}
 		else if ($segment == "report") {
+			$Report_model = new Report_model;
+			if($this->request->uri->getSegment(3)){
+				$data['getTransaksi_bycode']  = $Report_model->getTransaksi_bycode($this->request->uri->getSegment(3));
+				$data['getTransaksi_item']  = $Report_model->getTransaksi_item($this->request->uri->getSegment(3))->getResult();
+			}else{
+				$data['getTransaksi']  = $Report_model->getTransaksi()->getResult();
+			}
+			
 		}
 		else{
 			$segment = "404";

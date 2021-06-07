@@ -17,11 +17,11 @@ class User_model extends Model
         return $query;
     }
  
-    public function updateProduct($data, $id)
-    {
-        $query = $this->db->table('product')->update($data, array('product_id' => $id));
-        return $query;
-    }
+    // public function updateProduct($data, $id)
+    // {
+    //     $query = $this->db->table('product')->update($data, array('product_id' => $id));
+    //     return $query;
+    // }
  
     public function deleteInventory($code)
     {

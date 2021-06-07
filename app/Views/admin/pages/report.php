@@ -1,3 +1,6 @@
+<?php 
+// print_r($getTransaksi); 
+?>
 
 <div class="card" style="padding: 20px;margin-top: 20px;">
 <table class="table">
@@ -11,16 +14,17 @@
     </tr>
   </thead>
   <tbody>
+    <?php $no=1; foreach($getTransaksi as $Transaksi){?>
     <tr>
-      <th scope="row">1</th>
-      <td>20 Januari 2020</td>
-      <td>Dzarr</td>
-      <td>Rp 20.000</td>
+      <th scope="row"><?php print_r($no); $no++; ?></th>
+      <td><?php print_r($Transaksi->tanggal_transaksi) ?></td>
+      <td><?php print_r($Transaksi->operator_transaksi) ?></td>
+      <td><?php print_r($Transaksi->total_transaksi) ?></td>
       <td>
-        <div>00216584684253</div>
+        <div><?php print_r($Transaksi->transaksi_kode) ?></div>
         <div>
           <a 
-          href="/admin/report/00216584684253" 
+          href="/admin/report/<?php print_r($Transaksi->transaksi_kode) ?>" 
           style="
               text-decoration: none;
               font-size: 13;
@@ -29,6 +33,7 @@
         </div>
       </td>
     </tr>
+    <?php } ?>
   </tbody>
 </table>
 </div>
