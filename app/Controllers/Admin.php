@@ -8,6 +8,7 @@ use App\Models\Inventory_model;
 use App\Models\Transaction_model;
 use App\Models\User_model;
 use App\Models\Report_model;
+use App\Models\Dashboard_model;
 
 class Admin extends BaseController
 {
@@ -16,6 +17,11 @@ class Admin extends BaseController
 		$segment = $this->request->uri->getSegment(2);
 		if ($segment == "" || $segment == "dashboard") {
 			$segment = "dashboard";
+			$Dashboard_model = new Dashboard_model;
+			$data['getIncome']  =  ($Dashboard_model->getIncome("2021-06"));
+			$data['getProductTotal']  =  ($Dashboard_model->getProductTotal());
+			$data['getOperatorTotal']  =  ($Dashboard_model->getOperatorTotal());
+			$data['getProductHabis']  =  ($Dashboard_model->getProductHabis());
 			
 		}
 		else if ($segment == "inventory") {
@@ -118,9 +124,7 @@ class Admin extends BaseController
 		$request = \Config\Services::request();
 		$Transaction_model = new Transaction_model;
 		$data = json_decode($request->getPost('arrayItem'));
-		// $myTime = new Time('now');
 		$date = $request->getPost('date');
-		// define("id", crc32($date));
 		$id = md5($date);
 		
 		$name = $request->getPost('pengguna');
@@ -133,14 +137,18 @@ class Admin extends BaseController
 		];
 		
 		$Transaction_model->addTransaction($transaction) ;
+		$Inventory_model = new Inventory_model;
 		$no = 1;
 		foreach($data as $item){
+			
 			$items = [
 				'barang_nama' => $item->namabrg,
 				'barang_jumlah'    => $item->qty,
 				'barang_harga' => $item->hargabrg,
 				'transaksi_kode'    => $id
 			];
+			$checkdata = json_decode($Transaction_model->check_data($item->code));
+			$Inventory_model->updateInventory(['stok' => (intval($checkdata[0]->stok) - intval($item->qty))], $item->code);
 			$Transaction_model->addTransaction_item($items) ;
 		}
 		return redirect()->to(("/admin/report/" . $id));
