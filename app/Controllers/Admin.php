@@ -74,21 +74,21 @@ class Admin extends BaseController
 	public function transaction_process(){
 		$request = \Config\Services::request();
 		$Transaction_model = new Transaction_model;
-		$data = json_decode($request->getPost('test'));
+		$data = json_decode($request->getPost('arrayItem'));
 		// $myTime = new Time('now');
-		$date = date("Y-m-d h:i:s");
-		define("id", crc32($date));
-		// $id = crc32($date);
+		$date = $request->getPost('date');
+		// define("id", crc32($date));
+		$id = md5($date);
 		
-		$name = $request->getPost('test2');
+		$name = $request->getPost('pengguna');
 		
 		$transaction = [
-			'transaksi_kode' => id,
+			'transaksi_kode' => $id,
 			'tanggal_transaksi'    => $date,
 			'operator_transaksi' => $name,
-			'total_transaksi'    => 0
+			'total_transaksi'    => $request->getPost('total')
 		];
-
+		
 		$Transaction_model->addTransaction($transaction) ;
 		$no = 1;
 		foreach($data as $item){
@@ -96,11 +96,11 @@ class Admin extends BaseController
 				'barang_nama' => $item->namabrg,
 				'barang_jumlah'    => $item->qty,
 				'barang_harga' => $item->hargabrg,
-				'transaksi_kode'    => id
+				'transaksi_kode'    => $id
 			];
 			$Transaction_model->addTransaction_item($items) ;
 		}
-		return redirect()->to(("/admin/report/" . id));
+		return redirect()->to(("/admin/report/" . $id));
 		
 		
 	}

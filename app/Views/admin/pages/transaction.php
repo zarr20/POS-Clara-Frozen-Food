@@ -73,7 +73,8 @@
             "</tr>"
           )
           document.getElementById("result").innerHTML = cetak;
-          document.getElementById("test").value = JSON.stringify(checkout);
+          document.getElementById("arrayItem").value = JSON.stringify(checkout);
+          document.getElementById("total").value = total;
       }
       function deleteItem(index){
         checkout.splice(index, 1);
@@ -119,8 +120,10 @@
 
 <form action="/admin/transaction/process" method="post">
   <div>
-      <input type="text" name="test2" id="test2" value="<?php echo $nama_pengguna_; ?> as <?php echo $akses_pengguna_; ?>">
-      <input type="text" name="test" id="test">
+      <input type="hidden" name="pengguna" id="operator" value="<?php echo $nama_pengguna_; ?> as <?php echo $akses_pengguna_; ?>">
+      <input type="hidden" name="arrayItem" id="arrayItem">
+      <input type="hidden" name="total" id="total">
+      <input type="hidden" name="date" value="<?php echo date("Y-m-d h:i:s") ?>">
       <button type="submit" style="
         background-color: #03DA73;
         color: white;
