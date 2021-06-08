@@ -12,20 +12,20 @@ class User_model extends Model
         return $builder->get();
     }
  
-    public function addInventory($data){
+    public function addUser($data){
         $query = $this->db->table('pengguna')->insert($data);
         return $query;
     }
  
-    // public function updateProduct($data, $id)
-    // {
-    //     $query = $this->db->table('product')->update($data, array('product_id' => $id));
-    //     return $query;
-    // }
- 
-    public function deleteInventory($code)
+    public function updateUser($data, $id)
     {
-        $query = $this->db->table('barang')->delete(array('barang_kode' => $code));
+        $query = $this->db->table('pengguna')->update($data, array('id_pengguna' => $id));
+        return $query;
+    }
+ 
+    public function deleteUser($code)
+    {
+        $query = $this->db->table('pengguna')->delete(array('id_pengguna' => $code));
         return $query;
     } 
 

@@ -21,7 +21,7 @@ Add Item
       </div>
       <div class="modal-body">
         
-      <form action="/admin/inventory-add" method="post">
+      <form action="/admin/inventory/add" method="post">
       <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Item code</label>
         <input type="text" class="form-control" name="brgCode" placeholder="KD00125555">
@@ -62,7 +62,7 @@ Add Item
       </div>
       <div class="modal-body">
         
-      <form action="/admin/inventory-save" method="post">
+      <form action="/admin/inventory/save" method="post">
       <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Item code</label>
         <input type="text" class="form-control" name="brgCodeEdit" id="brgCode" placeholder="KD00125555" readonly>
@@ -125,7 +125,7 @@ Add Item
                 <img src="/assets/plus-icon.svg" style="margin-right: 9px;margin-top: -4;">
                 Edit
                 </a>
-                <a href="/admin/inventory-delete/<?php print_r($Inventory->barang_kode) ?>" 
+                <a href="/admin/inventory/delete/<?php print_r($Inventory->barang_kode) ?>" 
                 style="background-color: #da0348;color: white;text-decoration: none;padding: 4px 13px;margin: 2px;border-radius: 5px;align-self: center;align-content: center;">
                 <img src="/assets/trash-icon.svg" style="margin-right: 9px;margin-top: -4;">
                 Delete

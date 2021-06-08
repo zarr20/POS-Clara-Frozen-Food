@@ -71,6 +71,49 @@ class Admin extends BaseController
         print_r($Transaction_model->check_data($kodeBrg)) ;
     }
 
+	public function user_add(){
+		$request = \Config\Services::request();
+		$Usermodel = new User_model();
+		// var_dump($request->getPost());
+
+		$user = [
+			'nama_pengguna' => $request->getPost('nama'),
+			'akses_pengguna'    => $request->getPost('akses'),
+			'username' => $request->getPost('username'),
+			'password'    => $request->getPost('password')
+		];
+
+		// periksa dulu username sudah dipakai/belum
+		$Usermodel->addUser($user) ;
+		return redirect()->to(("/admin/user"));
+	}
+
+	public function user_delete(){
+		$segment = $this->request->uri->getSegment(4);
+		echo $segment;
+
+		$Usermodel = new User_model;
+		$Usermodel->deleteUser($segment);
+
+		return redirect()->to('/admin/user');
+	
+	}
+	public function user_save(){
+		$request = \Config\Services::request();
+		$Usermodel = new User_model();
+
+		$user = [
+			'nama_pengguna' => $request->getPost('nama'),
+			'akses_pengguna'    => $request->getPost('akses'),
+			'username' => $request->getPost('username'),
+			'password'    => $request->getPost('password')
+		];
+		$Usermodel->updateUser($user, $request->getPost('id'));
+		
+		return redirect()->to('/admin/user');
+		
+	}
+
 	public function transaction_process(){
 		$request = \Config\Services::request();
 		$Transaction_model = new Transaction_model;
@@ -157,7 +200,7 @@ class Admin extends BaseController
 	}
 
 	public function inventory_delete(){
-		$segment = $this->request->uri->getSegment(3);
+		$segment = $this->request->uri->getSegment(4);
 		echo $segment;
 
 		$Inventory_model = new Inventory_model;

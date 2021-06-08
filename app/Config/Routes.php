@@ -33,12 +33,19 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Main::index');
 //  $routes->get('/admin', 'Main::index');
-$routes->get('/admin/inventory-delete/:segment', 'Admin::inventory_delete');
-$routes->post('/admin/inventory-save', 'Admin::inventory_save');
-$routes->post('/admin/inventory-add', 'Admin::inventory_add');
 $routes->get('/admin/check_product', 'Admin::check_product');
+
+$routes->get('/admin/inventory/delete/:segment', 'Admin::inventory_delete');
+$routes->post('/admin/inventory/save', 'Admin::inventory_save');
+$routes->post('/admin/inventory/add', 'Admin::inventory_add');
+
 $routes->post('/admin/transaction/process', 'Admin::transaction_process');
 $routes->get('/admin/report/:segment', 'Admin::index');
+
+$routes->post('/admin/user/add', 'Admin::user_add');
+$routes->post('/admin/user/save', 'Admin::user_save');
+$routes->get('/admin/user/delete/:segment', 'Admin::user_delete');
+
 $routes->get('/admin/:segment', 'Admin::index');
 
 
